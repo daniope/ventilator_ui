@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:ventilator_ui/charts.dart';
+import 'package:ventilator_ui/sidebar/sidebar.dart';
 import 'dart:async';
 import 'dart:math' as math;
 
