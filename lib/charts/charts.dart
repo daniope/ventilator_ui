@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ventilator_ui/charts/chart.dart';
 
-class SideBar extends StatelessWidget {
+class Charts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
