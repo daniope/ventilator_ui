@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import 'dart:async';
 import 'dart:math' as math;
 
 class Chart extends StatelessWidget {
@@ -35,7 +34,7 @@ class Chart extends StatelessWidget {
     );
   }
 
-  void updateDataSource(Timer timer) {
+  void updateDataSource() {
     chartData.add(LiveData(time++, (math.Random().nextInt(60) + 30)));
     chartData.removeAt(0);
     _chartSeriesController.updateDataSource(
@@ -50,6 +49,11 @@ List<LiveData> chartData = <LiveData>[
   LiveData(2,42),
   LiveData(3,42),
   LiveData(4,42),
+  LiveData(5,42),
+  LiveData(6,42),
+  LiveData(7,42),
+  LiveData(8,42),
+  LiveData(9,42),
 ];
 
 class LiveData {
