@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:ventilator_ui/sidebar/sidebar.dart';
-import 'package:ventilator_ui/charts/chart.dart';
 import 'package:ventilator_ui/charts/charts.dart';
 
 import 'dart:async';
@@ -54,8 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Row(
         children: [
-          Expanded(child: SideBar()),
-          Expanded(child: charts),
+          Expanded(
+            child: SideBar(),
+            flex: 2,
+          ),
+          Expanded(
+            child: charts,
+            flex: 8,
+          ),
         ],
       ),
     );
