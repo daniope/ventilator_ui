@@ -19,8 +19,8 @@ class Charts extends StatelessWidget {
   }
 
   void updateDataSource(Timer timer) {
-    pressureChart.updateDataSource();
-    flowChart.updateDataSource();
-    volumeChart.updateDataSource();
+    pressureChart.update();
+    flowChart.update();
+    volumeChart.update();
   }
 }
