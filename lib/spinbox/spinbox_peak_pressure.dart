@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/material.dart';
 
-class Peak extends StatelessWidget {
+class PeakPressure extends StatelessWidget {
   Widget build(BuildContext context) {
     return SpinBox(
       min: 0.0,
