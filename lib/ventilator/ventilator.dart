@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ventilator_ui/spinbox/spinbox_peak_pressure.dart';
 import 'package:ventilator_ui/spinbox/spinbox_peep.dart';
+import 'package:ventilator_ui/spinbox/spinbox_ratio.dart';
 import 'package:ventilator_ui/spinbox/spinbox_respiratory_rate.dart';
 
 class Ventilator extends StatelessWidget {
@@ -18,6 +19,10 @@ class Ventilator extends StatelessWidget {
         ),
         Padding(
           child: RespiratoryRate(),
+          padding: const EdgeInsets.all(16),
+        ),
+        Padding(
+          child: Ratio(),
           padding: const EdgeInsets.all(16),
         ),
       ],
