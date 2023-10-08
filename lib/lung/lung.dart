@@ -10,14 +10,8 @@ class Lung extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          child: Compliance(),
-          padding: const EdgeInsets.all(16),
-        ),
-        Padding(
-          child: Resistance(),
-          padding: const EdgeInsets.all(16),
-        ),
+        Compliance(),
+        Resistance(),
       ],
     );
   }

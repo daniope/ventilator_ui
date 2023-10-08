@@ -8,18 +8,9 @@ class Basics extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          child: PEEP(),
-          padding: const EdgeInsets.all(16),
-        ),
-        Padding(
-          child: RespiratoryRate(),
-          padding: const EdgeInsets.all(16),
-        ),
-        Padding(
-          child: Ratio(),
-          padding: const EdgeInsets.all(16),
-        ),
+        PEEP(),
+        RespiratoryRate(),
+        Ratio(),
       ],
     );
   }

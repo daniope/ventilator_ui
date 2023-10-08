@@ -8,10 +8,7 @@ class PCV extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          child: PeakPressure(),
-          padding: const EdgeInsets.all(16),
-        ),
+        PeakPressure(),
       ],
     );
   }
