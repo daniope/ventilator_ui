@@ -51,17 +51,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          Expanded(
-            child: SideBar(),
-            flex: 2,
-          ),
-          Expanded(
-            child: charts,
-            flex: 8,
-          ),
-        ],
+      body: Container(
+        margin: EdgeInsets.all(10.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: SideBar(),
+              flex: 2,
+            ),
+            Expanded(
+              child: charts,
+              flex: 8,
+            ),
+          ],
+        ),
       ),
     );
   }
