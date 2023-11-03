@@ -23,51 +23,51 @@ class Ventilation {
     this.lib = ffi.DynamicLibrary.open(this.libPath);
 
     this.elastanceCreate = this.lib
-      .lookup<ffi.NativeFunction<ElastanceCreateFunc>>('VENTILATION_elastance_create')
+      .lookup<ffi.NativeFunction<ElastanceCreateNative>>('VENTILATION_elastance_create')
       .asFunction();
 
     this.resistanceCreate = this.lib
-      .lookup<ffi.NativeFunction<ResistanceCreateFunc>>('VENTILATION_resistance_create')
+      .lookup<ffi.NativeFunction<ResistanceCreateNative>>('VENTILATION_resistance_create')
       .asFunction();
     
     this.lungCreate = this.lib
-      .lookup<ffi.NativeFunction<LungCreateFunc>>('VENTILATION_lung_create')
+      .lookup<ffi.NativeFunction<LungCreateNative>>('VENTILATION_lung_create')
       .asFunction();
     
     this.frequencyBPM = this.lib
-      .lookup<ffi.NativeFunction<FrequencyBPMFunc>>('VENTILATION_frequency_bpm')
+      .lookup<ffi.NativeFunction<FrequencyBPMNative>>('VENTILATION_frequency_bpm')
       .asFunction();
     
     this.ratioCreate = this.lib
-      .lookup<ffi.NativeFunction<RatioCreateFunc>>('VENTILATION_ratio_create')
+      .lookup<ffi.NativeFunction<RatioCreateNative>>('VENTILATION_ratio_create')
       .asFunction();
     
     this.cycleCreate = this.lib
-      .lookup<ffi.NativeFunction<CycleCreateFunc>>('VENTILATION_cycle_create')
+      .lookup<ffi.NativeFunction<CycleCreateNative>>('VENTILATION_cycle_create')
       .asFunction();
     
     this.peepCreate = this.lib
-      .lookup<ffi.NativeFunction<PeepCreateFunc>>('VENTILATION_peep_create')
+      .lookup<ffi.NativeFunction<PeepCreateNative>>('VENTILATION_peep_create')
       .asFunction();
     
     this.peakCreate = this.lib
-      .lookup<ffi.NativeFunction<PeakCreateFunc>>('VENTILATION_pressure_peak_create')
+      .lookup<ffi.NativeFunction<PeakCreateNative>>('VENTILATION_pressure_peak_create')
       .asFunction();
     
     this.ventilatorPCV = this.lib
-      .lookup<ffi.NativeFunction<VentilatorPCVFunc>>('VENTILATION_ventilator_pcv')
+      .lookup<ffi.NativeFunction<VentilatorPCVNative>>('VENTILATION_ventilator_pcv')
       .asFunction();
     
     this.ventilatorControl = this.lib
-      .lookup<ffi.NativeFunction<VentilatorControlFunc>>('VENTILATION_ventilator_control')
+      .lookup<ffi.NativeFunction<VentilatorControlNative>>('VENTILATION_ventilator_control')
       .asFunction();
     
     this.packetPressure = this.lib
-      .lookup<ffi.NativeFunction<PacketPressureFunc>>('VENTILATION_packet_pressure')
+      .lookup<ffi.NativeFunction<PacketPressureNative>>('VENTILATION_packet_pressure')
       .asFunction();
 
     this.pressureValue = this.lib
-      .lookup<ffi.NativeFunction<PressureValueFunc>>('VENTILATION_pressure_value')
+      .lookup<ffi.NativeFunction<PressureValueNative>>('VENTILATION_pressure_value')
       .asFunction();
   }
 }
