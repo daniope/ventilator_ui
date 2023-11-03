@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:ventilator_ui/sidebar/sidebar.dart';
+import 'package:ventilator_ui/console/console.dart';
 import 'package:ventilator_ui/charts/charts.dart';
+import 'package:ventilator_ui/wrapper/wrapper.dart';
 
 import 'dart:async';
+import 'dart:io' show Directory, Platform;
 import 'dart:math' as math;
+import 'package:path/path.dart' as path;
 
 void main() {
   runApp(MyApp());
@@ -56,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           children: [
             Expanded(
-              child: SideBar(),
+              child: Console(),
               flex: 2,
             ),
             Expanded(
