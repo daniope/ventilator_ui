@@ -1,5 +1,5 @@
 name: 'Ventilation'
-output: 'lib/ventilation/ventilation_bindings.dart'
+output: 'lib/ventilation/ventilation.dart'
 headers:
     entry-points:
         - 'ventilation-c/include/ventilation/ventilation.h'
