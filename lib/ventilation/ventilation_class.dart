@@ -1,6 +1,6 @@
-part of wrapper;
+part of ventilation;
 
-class VentilationWrapper {
+class Ventilation {
   final String            libPath;
   late ffi.DynamicLibrary lib;
 
@@ -17,7 +17,7 @@ class VentilationWrapper {
   late PacketPressure    packetPressure;
   late PressureValue     pressureValue;
 
-  VentilationWrapper(String libPath)
+  Ventilation(String libPath)
     : this.libPath = libPath
   {
     this.lib = ffi.DynamicLibrary.open(this.libPath);

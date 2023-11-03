@@ -1,4 +1,4 @@
-part of wrapper;
+part of ventilation;
 
 typedef ElastanceCreateFunc = ffi.Pointer Function(
   ffi.Float elastance,

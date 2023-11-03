@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:ventilator_ui/console/console.dart';
 import 'package:ventilator_ui/charts/charts.dart';
-import 'package:ventilator_ui/wrapper/wrapper.dart';
 
 import 'dart:async';
 import 'dart:io' show Directory, Platform;
