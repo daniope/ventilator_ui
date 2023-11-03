@@ -1,0 +1,3 @@
+[submodule "ventilation-c"]
+	path = ventilation-c
+	url = https://github.com/pacce/ventilation-c
