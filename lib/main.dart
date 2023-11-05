@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:ventilator_ui/console/console.dart';
 import 'package:ventilator_ui/charts/charts.dart';
+import 'package:ventilator_ui/ventilation/ventilation.dart';
 
 import 'dart:async';
+import 'dart:ffi' as ffi;
 import 'dart:io' show Directory, Platform;
 import 'dart:math' as math;
+
+import 'package:ffi/ffi.dart';
 import 'package:path/path.dart' as path;
 
 void main() {
@@ -37,17 +41,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Timer? timer;
   final Charts charts = new Charts();
 
-  @override
-  void initState() {
-    Timer.periodic(
-      const Duration(seconds: 1),
-      (timer) {
-        charts.updateDataSource(timer);
-      },
+  _MyHomePageState() {
+    timer = Timer.periodic(
+      const Duration(milliseconds: 100),
+      _updateDataSource
     );
-    super.initState();
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel;
+    super.dispose();
+  }
+
+  void _updateDataSource(Timer timer) {
+    charts.updateDataSource();
   }
 
   @override

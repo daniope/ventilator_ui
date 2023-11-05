@@ -35,7 +35,9 @@ class Chart extends StatelessWidget {
   }
 
   void update() {
-    chartData.add(LiveData(time++, (math.Random().nextInt(60) + 30)));
+    chartData.add(
+      LiveData(time++, 0.0)
+    );
     chartData.removeAt(0);
     _chartSeriesController.updateDataSource(
       addedDataIndex: chartData.length - 1, removedDataIndex: 0

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ventilator_ui/charts/chart.dart';
 
-import 'dart:async';
-
 class Charts extends StatelessWidget {
   Chart pressureChart = new Chart();
   Chart flowChart = new Chart();
@@ -18,7 +16,7 @@ class Charts extends StatelessWidget {
     );
   }
 
-  void updateDataSource(Timer timer) {
+  void updateDataSource() {
     pressureChart.update();
     flowChart.update();
     volumeChart.update();
