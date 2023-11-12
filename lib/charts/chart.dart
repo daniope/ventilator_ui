@@ -3,8 +3,10 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'dart:math' as math;
 
+const int N = 150;
+
 class Chart extends StatelessWidget {
-  int time = 299;
+  int time = N - 1;
   late ChartSeriesController _chartSeriesController;
 
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class Chart extends StatelessWidget {
   }
 }
 
-List<LiveData> chartData = List.generate(300, (index) => LiveData(index, 0.0));
+List<LiveData> chartData = List.generate(N, (index) => LiveData(index, 0.0));
 
 class LiveData {
   LiveData(this.time, this.speed);
