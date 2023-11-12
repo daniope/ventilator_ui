@@ -4,7 +4,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'dart:math' as math;
 
 class Chart extends StatelessWidget {
-  int time = 19;
+  int time = 299;
   late ChartSeriesController _chartSeriesController;
 
   Widget build(BuildContext context) {
@@ -34,9 +34,9 @@ class Chart extends StatelessWidget {
     );
   }
 
-  void update() {
+  void update(double sample) {
     chartData.add(
-      LiveData(time++, 0.0)
+      LiveData(time++, sample)
     );
     chartData.removeAt(0);
     _chartSeriesController.updateDataSource(
@@ -45,18 +45,7 @@ class Chart extends StatelessWidget {
   }
 }
 
-List<LiveData> chartData = <LiveData>[
-  LiveData(0,10),
-  LiveData(1,42),
-  LiveData(2,42),
-  LiveData(3,42),
-  LiveData(4,42),
-  LiveData(5,42),
-  LiveData(6,42),
-  LiveData(7,42),
-  LiveData(8,42),
-  LiveData(9,42),
-];
+List<LiveData> chartData = List.generate(300, (index) => LiveData(index, 0.0));
 
 class LiveData {
   LiveData(this.time, this.speed);

@@ -16,9 +16,9 @@ class Charts extends StatelessWidget {
     );
   }
 
-  void updateDataSource() {
-    pressureChart.update();
-    flowChart.update();
-    volumeChart.update();
+  void updateDataSource(double pressure) {
+    pressureChart.update(pressure);
+    flowChart.update(0.0);
+    volumeChart.update(0.0);
   }
 }
