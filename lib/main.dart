@@ -6,6 +6,7 @@ import 'dart:math' as math;
 
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
+import 'package:tuple/tuple.dart';
 
 import 'package:ventilator_ui/console/console.dart';
 import 'package:ventilator_ui/charts/charts.dart';
@@ -46,14 +47,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Timer? timer;
   late final Ventilation _v;
 
-  late final List<double> _pb;
+  late final List<Tuple3<double, double, double>> _sampleBuffer;
 
   final Console console = new Console(); 
   final Charts charts = new Charts();
 
   _MyHomePageState() {
     _v = Ventilation.create(_libPath);
-    _pb = [];
+    _sampleBuffer = [];
+
     timer = Timer.periodic(
       const Duration(microseconds: 10),
       _updateDataSource
@@ -69,14 +71,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _updateDataSource(Timer timer) {
     _v.update();
-    double p = _v.getPressure();
-    _pb.add(p);
 
-    if (_pb.length == 1000) {
-      var pMean = _pb.average;
-      _pb.clear();
+    _sampleBuffer.add(_v.getSample());
 
-      charts.updateDataSource(pMean);
+    if (_sampleBuffer.length == 1000) {
+      var pMean = _sampleBuffer.map((s) => s.item1).average;
+      var fMean = _sampleBuffer.map((s) => s.item2).average;
+      var vMean = _sampleBuffer.map((s) => s.item3).average;
+      _sampleBuffer.clear();
+
+      charts.updateDataSource(pMean, fMean, vMean);
     }
   }
 
