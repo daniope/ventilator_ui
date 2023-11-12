@@ -1,10 +1,12 @@
 part of ventilation;
 
-typedef Sample = Tuple3<
+typedef SamplePtr = Tuple3<
   ffi.Pointer<VENTILATION_Pressure>,
   ffi.Pointer<VENTILATION_Flow>,
   ffi.Pointer<VENTILATION_Volume>
 >;
+
+typedef Sample = Tuple3<double, double, double>;
 
 class Ventilation {
   final String _libPath;
@@ -16,7 +18,7 @@ class Ventilation {
   late final ffi.Pointer<VENTILATION_Ventilator> _ventilator;
 
   late ffi.Pointer<VENTILATION_Packet> _packetCurr;
-  late Sample _sampleCurr;
+  late SamplePtr _samplePtrCurr;
 
   Ventilation.create(String libPath)
     : _libPath = libPath,
@@ -84,7 +86,7 @@ class Ventilation {
       _lung,
       _error
       );
-    _sampleCurr = Sample(
+    _samplePtrCurr = SamplePtr(
       _vb.VENTILATION_packet_pressure(_packetCurr, _error),
       _vb.VENTILATION_packet_flow(_packetCurr, _error),
       _vb.VENTILATION_packet_volume(_packetCurr, _error),
@@ -92,11 +94,11 @@ class Ventilation {
     assert(_error.value == VENTILATION_ERROR_OK);
   }
 
-  Tuple3<double, double, double> getSample() {
-    var sample = Tuple3<double, double, double>(
-      _vb.VENTILATION_pressure_value(_sampleCurr.item1, _error),
-      _vb.VENTILATION_flow_value(_sampleCurr.item2, _error),
-      _vb.VENTILATION_volume_value(_sampleCurr.item3, _error),
+  Sample getSample() {
+    var sample = Sample(
+      _vb.VENTILATION_pressure_value(_samplePtrCurr.item1, _error),
+      _vb.VENTILATION_flow_value(_samplePtrCurr.item2, _error),
+      _vb.VENTILATION_volume_value(_samplePtrCurr.item3, _error),
     );
     assert(_error.value == VENTILATION_ERROR_OK);
 

@@ -47,10 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Timer? timer;
   late final Ventilation _v;
 
-  late final List<Tuple3<double, double, double>> _sampleBuffer;
+  late final List<Sample> _sampleBuffer;
 
-  final Console console = new Console(); 
-  final Charts charts = new Charts();
+  final Console _console = new Console(); 
+  final Charts _charts   = new Charts();
 
   _MyHomePageState() {
     _v = Ventilation.create(_libPath);
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
       var vMean = _sampleBuffer.map((s) => s.item3).average;
       _sampleBuffer.clear();
 
-      charts.updateDataSource(pMean, fMean, vMean);
+      _charts.updateDataSource(pMean, fMean, vMean);
     }
   }
 
@@ -92,11 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           children: [
             Expanded(
-              child: console,
+              child: _console,
               flex: 2,
             ),
             Expanded(
-              child: charts,
+              child: _charts,
               flex: 8,
             ),
           ],
