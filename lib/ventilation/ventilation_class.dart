@@ -14,7 +14,8 @@ class Ventilation {
 
   final ffi.Pointer<VENTILATION_error> _error;
 
-  late final ffi.Pointer<VENTILATION_Lung>       _lung;
+  late final ffi.Pointer<VENTILATION_Resistance> _resistance;
+  late ffi.Pointer<VENTILATION_Lung>       _lung;
   late final ffi.Pointer<VENTILATION_Ventilator> _ventilator;
 
   late ffi.Pointer<VENTILATION_Packet> _packetCurr;
@@ -31,11 +32,8 @@ class Ventilation {
       1000.0/30.0,
       _error
     );
-    ffi.Pointer<VENTILATION_Resistance> resistance = _vb.VENTILATION_resistance_create(
-      50.0,
-      _error
-    );
-    _lung       = _vb.VENTILATION_lung_create(resistance, elastance, _error);
+    _resistance = _vb.VENTILATION_resistance_create(50.0, _error);
+    _lung       = _vb.VENTILATION_lung_create(_resistance, elastance, _error);
     assert(_error.value == VENTILATION_ERROR_OK);
     
     ffi.Pointer<VENTILATION_Frequency> frequency = _vb.VENTILATION_frequency_bpm(
@@ -75,9 +73,19 @@ class Ventilation {
     _vb.VENTILATION_cycle_delete(cycle, _error);
     _vb.VENTILATION_ratio_delete(ratio, _error);
     _vb.VENTILATION_frequency_delete(frequency, _error);
-    _vb.VENTILATION_resistance_delete(resistance, _error);
     _vb.VENTILATION_elastance_delete(elastance, _error);
     assert(_error.value == VENTILATION_ERROR_OK);
+  }
+
+  void setCompliance(double compliance) {
+    ffi.Pointer<VENTILATION_Elastance> elastance = _vb.VENTILATION_elastance_create(
+      1000.0 / compliance,
+      _error
+    );
+    _lung       = _vb.VENTILATION_lung_create(_resistance, elastance, _error);
+    assert(_error.value == VENTILATION_ERROR_OK);
+
+    _vb.VENTILATION_elastance_delete(elastance, _error);
   }
 
   void update() {
@@ -106,6 +114,7 @@ class Ventilation {
   }
 
   void delete() {
+    _vb.VENTILATION_resistance_delete(_resistance, _error);
     _vb.VENTILATION_ventilator_delete(_ventilator, _error);
     _vb.VENTILATION_lung_delete(_lung, _error);
     _vb.VENTILATION_packet_delete(_packetCurr, _error);

@@ -36,8 +36,16 @@ class _HomePageState extends State<HomePage> {
       const Duration(microseconds: 10),
       _updateDataSource
     );
+    
+    _console.lung.compliance.notifier.addListener(
+      () => _setCompliance(_console.lung.compliance.notifier.value)
+    ); 
 
     super.initState();
+  }
+
+  void _setCompliance(double value) {
+    _v.setCompliance(value);
   }
 
   void _updateDataSource(Timer timer) {
@@ -53,6 +61,9 @@ class _HomePageState extends State<HomePage> {
 
       _charts.updateDataSource(pMean, fMean, vMean);
     }
+  }
+
+  void _set() {
   }
 
   @override

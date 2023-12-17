@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/material.dart';
 
 class Compliance extends StatelessWidget {
+  ValueNotifier<double> notifier = ValueNotifier(0.0);
+
   Widget build(BuildContext context) {
     return SpinBox(
       min: 1.0,
@@ -10,7 +12,7 @@ class Compliance extends StatelessWidget {
       decimals: 0,
       step: 1.0,
       decoration: InputDecoration(labelText: 'Compliance (mL/cmH\u2082O)'),
-      onChanged: (value) => print('Compliance: $value'),
+      onChanged: (value) => notifier.value = value,
     );
   }
 }
